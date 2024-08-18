@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install required packages
 RUN apt-get update && apt-get install -y \
-    liblua5.1-0 libmysqlclient-dev libboost-system-dev libboost-thread-dev libgmp-dev libxml2-dev \
+    liblua5.1-0 libmysqlclient-dev libboost-system-dev libboost-thread-dev libboost-regex1.74-dev libgmp-dev libxml2-dev \
     wget unzip
 
 # Create directories for the server and data
@@ -22,6 +22,9 @@ RUN chmod +x /opt/server/TheForgottenServer
 
 # Copy the config.lua to /data so it can be modified from outside
 RUN cp /opt/server/config.lua /data/config.lua
+
+# Set the dynamic linker path
+ENV LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu/"
 
 # Expose the port used by the server
 EXPOSE 7171 7172
