@@ -37,7 +37,7 @@ COPY import_db.sh /opt/server/import_db.sh
 RUN chmod +x /opt/server/import_db.sh
 
 # Command to run the server, config.lua and data will be linked to the /data directory
-CMD ["sh", "-c", "/opt/server/import_db.sh && ln -sf /data/config.lua ./config.lua && ln -sf /data/* ./data && ./TheForgottenServer"]
+CMD ["sh", "-c", "sleep 5 && "/opt/server/import_db.sh && ln -sf /data/config.lua ./config.lua && ln -sf /data/* ./data && ./TheForgottenServer"]
 
 
 
