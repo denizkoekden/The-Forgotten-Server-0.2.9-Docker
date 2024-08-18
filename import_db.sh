@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Wait for MySQL to be ready
-until mysql -h "$MYSQL_HOST" -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "SHOW DATABASES;" > /dev/null 2>&1; do
-  echo "Waiting for MySQL..."
-  sleep 3
-done
-
 # Check if the database has already been imported
 if [ ! -f /data/db_imported ]; then
     echo "Importing forgottenserver.sql into MySQL..."
